@@ -124,6 +124,8 @@ namespace general {
 
         var h3Promedio = <HTMLInputElement>document.getElementById('promedioh3');
 
+        h3Promedio.textContent = "Valor aprox. :";
+
         const listsAutos: Array<Vehiculo> = new Array<Vehiculo>();
 
 
@@ -194,9 +196,20 @@ namespace general {
 
                 total = calcularPromedio(element, total);
 
-                var promedio: number = total / listsAutos.length;
+                var promedio = total / listsAutos.length;
                 console.log(promedio);
-                h3Promedio.value = promedio.toString();
+                console.log("h3Promedio");
+
+                console.log(h3Promedio);
+                console.log(promedio.toString());
+
+
+
+                h3Promedio.textContent ="Valor aprox. :" +  promedio;
+                
+
+                
+
             });
 
             //agregar a la fila
@@ -300,15 +313,15 @@ namespace general {
 
             //     listsAutos.reduce(eliminarItem);
             // }
-            
+
 
             // function myFunc(listsAutos, id) {
             //     listsAutos.map()
-            
+
             //     return listsAutos;
 
             // }
-            
+
 
 
 
@@ -428,8 +441,6 @@ namespace general {
         var tr = document.createElement('tr');
         tr.setAttribute('id', 'thead');
 
-        // crearFilaFiltro();
-
         var encabezados = ["id", "Marca", "Modelo", "Precio", "Tipo", "CantPuertas", "CuatroxCuatro", "Accion"];
         thead.appendChild(tr);
 
@@ -443,249 +454,11 @@ namespace general {
         });
 
 
-        // animal de ejemplo
         tabla.appendChild(thead);
-        // var filas = document.createElement('div');
-        // filas.setAttribute('id', 'filas');
-        // tabla.appendChild(filas);
-
-        // var texto = ['Pajaro', 'Piolín', '-', '-', 'Loro'];
-
-        // agregarFilaLatabla(tabla, texto);
 
 
 
     }
-
-    // function eventosBotones() {
-
-
-    //     var form = <HTMLInputElement>document.getElementById('form');
-    //     var tabla = <HTMLInputElement>document.getElementById('tabla');
-    //     var btnCancelar = <HTMLInputElement>document.getElementById('btnCancelar');
-    //     var btnGuardar = <HTMLInputElement>document.getElementById('btnGuardar');
-
-
-    //     var listaMascotas: Array<Mascota> = new Array<Mascota>();
-
-
-    //     btnGuardar.addEventListener("click", () => {
-
-    //         var retorno = obtenerDatosForm();
-
-    //         //guardarEnListaArray;
-    //         if (retorno != null) {
-
-    //             console.log(retorno);
-
-
-    //             switch (retorno.Clase) {
-    //                 case 'Pajaro':
-
-    //                     // const nuevoPajaro: Pajaro = new Pajaro(retorno.Nombre, 3);
-    //                     // listaMascotas.push(nuevoPajaro);
-
-
-    //                     break;
-    //                 case 'Perro':
-    //                     const nuevoPerro: Perro = new Perro(retorno.Nombre, retorno.Raza);
-    //                     listaMascotas.push(nuevoPerro);
-
-    //                     console.log(listaMascotas);
-
-    //                     break;
-    //                 case 'Gato':
-    //                     const nuevoGato: Gato = new Gato(retorno.Nombre, retorno.CantVidas);
-    //                     listaMascotas.push(nuevoGato);
-    //                     console.log(listaMascotas);
-
-    //                     break;
-
-    //                 default:
-    //                     break;
-    //             }
-
-    //         }
-
-
-
-
-    //     });
-
-    // }
-
-
-
-
-
-
-    // function agregarFilaLatabla(fila, texto) {
-
-    //     var tr = document.createElement('tr');
-
-    //     texto.map(element => {
-
-    //         var td = document.createElement('td');
-    //         var text = document.createTextNode(element);
-    //         td.appendChild(text);
-    //         tr.appendChild(td);
-    //     });
-
-
-    //     fila.appendChild(tr);
-
-    // }
-    // function quitarFilaDeLatabla(filas) {
-
-    //     while (filas.firstChild) {
-    //         filas.firstChild.remove();
-    //     }
-
-    // }
-
-
-    // function crearFilaFiltro() {
-    //     var divfilter = document.getElementById('divFilter');
-    //     var trFilter = document.createElement('tr');
-    //     divfilter.appendChild(trFilter);
-
-    //     var dato = document.createElement("input");
-    //     dato.setAttribute("id", 'inputFilter');
-    //     dato.setAttribute("type", "text");
-    //     dato.style.display = "block";
-    //     dato.setAttribute('position', 'fixed');
-
-    //     trFilter.appendChild(dato);
-
-
-    //     var dato = <HTMLInputElement>document.getElementById('inputFilter');
-
-    //     dato.addEventListener('keyup', function () {
-    //         var encontro = false;
-    //         var texto = null;
-
-    //         if (dato.value.length > 3) {
-    //             console.log(dato.value);
-    //             //buscar en lista de array
-    //             var listaMascotas: Array<Mascota> = new Array<Mascota>();
-
-    //             const nuevoPerro: Perro = new Perro('fifi', 'caniche');
-    //             const nuevoPerro2: Perro = new Perro('nana', 'caniche');
-    //             const nuevoPerro3: Perro = new Perro('pepe', 'caniche');
-    //             const nuevoGato: Gato = new Gato('gato', 3);
-    //             const nuevoPajaro: Pajaro = new Pajaro('pajaro', eTipo.Loro);
-
-
-    //             listaMascotas.push(nuevoPerro);
-    //             listaMascotas.push(nuevoPerro2);
-    //             listaMascotas.push(nuevoPerro3);
-    //             listaMascotas.push(nuevoGato);
-    //             listaMascotas.push(nuevoPajaro);
-
-    //             var fila = <HTMLInputElement>document.getElementById('filas');
-
-
-
-
-    //             for (var i = 0; i < listaMascotas.length; i++) {
-
-
-    //                 if (listaMascotas[i].getNombre() == dato.value) {
-
-    //                     encontro = true;
-
-    //                     texto = [typeof (listaMascotas[i]), listaMascotas[i].getNombre()];
-    //                     var tipoMascota = listaMascotas[i].constructor.name;
-
-    //                     switch (tipoMascota) {
-    //                         case 'Perro':
-    //                             texto = [tipoMascota, listaMascotas[i].getNombre(), listaMascotas[i].getRaza(), "-", "-"];
-
-    //                             break;
-    //                         case 'Pajaro':
-    //                             if ((listaMascotas[i].getTipo().toString() == 1){
-    //                                 texto = [tipoMascota, listaMascotas[i].getNombre(), "-", "-", "Loro"];
-
-    //                             } else {
-    //                                 texto = [tipoMascota, listaMascotas[i].getNombre(), "-", "-", "Rapiña"];
-
-    //                             }
-    //                             break;
-    //                         case 'Gato':
-    //                             texto = [tipoMascota, listaMascotas[i].getNombre(), "-", listaMascotas[i].getVidasGato().toString(), "-"];
-
-    //                             break
-
-    //                     }
-
-
-    //                 }
-    //             }
-
-
-
-    //             //armar lista
-    //         }
-    //         if (texto != null) {
-    //             agregarFilaLatabla(fila, texto);
-
-    //         } else {
-
-    //             quitarFilaDeLatabla(fila);
-
-    //         }
-
-
-    //     });
-
-    // }
-
-    // function agregarEventoSelect() {
-
-
-    //     var select = <HTMLInputElement>document.getElementById('selectFormulario');
-
-
-
-    //     select.addEventListener('change', function () {
-
-    //         var nombreI = <HTMLInputElement>document.getElementById('Nombre');
-    //         var razaI = <HTMLInputElement>document.getElementById('Raza');
-    //         var tipoI = <HTMLInputElement>document.getElementById('Tipo');
-    //         var cantVidasI = <HTMLInputElement>document.getElementById('CantVidas');
-
-
-    //         console.log(select.value);
-    //         razaI.disabled = true;
-    //         tipoI.disabled = true;
-    //         cantVidasI.disabled = true;
-    //         nombreI.disabled = true;
-
-
-    //         switch (select.value) {
-    //             case 'Pajaro':
-    //                 nombreI.disabled = false;
-    //                 tipoI.disabled = false;
-
-
-    //                 break;
-    //             case 'Gato':
-    //                 nombreI.disabled = false;
-    //                 cantVidasI.disabled = false;
-
-    //                 break;
-    //             case 'Perro':
-    //                 nombreI.disabled = false;
-    //                 razaI.disabled = false;
-
-    //                 break;
-    //             default:
-
-    //                 break;
-    //         }
-    //     });
-
-    // }
 
 
     function obtenerDatosForm() {
@@ -696,9 +469,7 @@ namespace general {
         var ModeloI = <HTMLInputElement>document.getElementById('Modelo');
         var PrecioI = <HTMLInputElement>document.getElementById('Precio');
         var retorno = false;
-        // retorno = validarCampos(select.value, nombreI.value, razaI.value, cantVidasI.value, tipoI.value);
         var retornoJson = null;
-        // if (retorno == true) {
 
         retornoJson = {
             "Tipo": tipoI.value,
@@ -710,7 +481,6 @@ namespace general {
         }
 
 
-        // }
         tipoI.value = "-";
         MarcaI.value = "";
         ModeloI.value = "";
@@ -721,58 +491,6 @@ namespace general {
     }
 
 
-
-    // function validarCampos(mascota, nombre, raza, cantidadVidas, tipo) {
-
-
-    //     var retorno = true;
-
-
-    //     console.log(nombre.length);
-
-
-    //     if (mascota == "-" || nombre.length == 0) {
-
-
-    //         retorno = false;
-
-    //     }
-
-    //     if (raza.length == 0 && mascota == 'Perro') {
-
-    //         alert('Uno de los datos ingresados es incorrecto');
-
-    //         // alert('Perro');
-    //         console.log(mascota);
-
-    //         retorno = false;
-
-    //     }
-
-
-    //     if (cantidadVidas < 1 || cantidadVidas > 9 && mascota == 'Gato') {
-
-    //         alert('Uno de los datos ingresados es incorrecto');
-
-    //         retorno = false;
-
-
-    //     }
-    //     if (tipo == "-" && mascota == 'Pajaro') {
-
-    //         alert('Uno de los datos ingresados es incorrecto');
-
-    //         retorno = false;
-    //         alert('Pajaro');
-
-
-    //     }
-
-
-    //     return retorno;
-
-
-    // }
 
 
 }
