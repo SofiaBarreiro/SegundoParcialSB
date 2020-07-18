@@ -120,8 +120,11 @@ namespace general {
         traerDatosForm();
 
 
+        var promedioPrecio = 0;
 
-        var listsAutos: Array<Vehiculo> = new Array<Vehiculo>();
+        var h3Promedio = <HTMLInputElement>document.getElementById('promedioh3');
+
+        const listsAutos: Array<Vehiculo> = new Array<Vehiculo>();
 
 
         var form = <HTMLInputElement>document.getElementById('form');
@@ -182,12 +185,18 @@ namespace general {
 
 
 
-
+            var total: number = 0;
             listsAutos.map(element => {
 
                 // var texto = 
                 agregarFilaLatabla(tabla, element);
 
+
+                total = calcularPromedio(element, total);
+
+                var promedio: number = total / listsAutos.length;
+                console.log(promedio);
+                h3Promedio.value = promedio.toString();
             });
 
             //agregar a la fila
@@ -198,7 +207,16 @@ namespace general {
 
     });
 
+    function calcularPromedio(element, total): number {
 
+
+        var precio: Number = parseInt(element.precio);
+
+        total = precio + total;
+
+        return total;
+
+    }
 
 
     function agregarFilaLatabla(fila, element) {
@@ -277,6 +295,21 @@ namespace general {
             var tabla = <HTMLInputElement>document.getElementById('tabla');
 
             tabla.removeChild(filaBoton);
+
+            // if(listsAutos != null){
+
+            //     listsAutos.reduce(eliminarItem);
+            // }
+            
+
+            // function myFunc(listsAutos, id) {
+            //     listsAutos.map()
+            
+            //     return listsAutos;
+
+            // }
+            
+
 
 
         });
@@ -378,15 +411,7 @@ namespace general {
 
 
 
-        var botonCancelar = document.createElement("button");
-        botonCancelar.setAttribute("type", "button");
-        botonCancelar.textContent = 'Cerrar';
-        botonCancelar.setAttribute('id', 'btnCancelar');
-
-
-    
         fila.appendChild(botonGuardar);
-        fila.appendChild(botonCancelar);
         form.appendChild(fila);
 
 

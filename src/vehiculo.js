@@ -75,6 +75,8 @@ var general;
     window.addEventListener('load', function () {
         crearTabla();
         traerDatosForm();
+        var promedioPrecio = 0;
+        var h3Promedio = document.getElementById('promedioh3');
         var listsAutos = new Array();
         var form = document.getElementById('form');
         var tabla = document.getElementById('tabla');
@@ -103,13 +105,23 @@ var general;
                         break;
                 }
             }
+            var total = 0;
             listsAutos.map(function (element) {
                 // var texto = 
                 agregarFilaLatabla(tabla, element);
+                total = calcularPromedio(element, total);
+                var promedio = total / listsAutos.length;
+                console.log(promedio);
+                h3Promedio.value = promedio.toString();
             });
             //agregar a la fila
         });
     });
+    function calcularPromedio(element, total) {
+        var precio = parseInt(element.precio);
+        total = precio + total;
+        return total;
+    }
     function agregarFilaLatabla(fila, element) {
         var tr = document.createElement('tr');
         crearColumna(tr, '0');
@@ -159,6 +171,13 @@ var general;
             var id = filaBoton.children[0].textContent;
             var tabla = document.getElementById('tabla');
             tabla.removeChild(filaBoton);
+            // if(listsAutos != null){
+            //     listsAutos.reduce(eliminarItem);
+            // }
+            // function myFunc(listsAutos, id) {
+            //     listsAutos.map()
+            //     return listsAutos;
+            // }
         });
         return tr;
     }
@@ -212,12 +231,7 @@ var general;
         botonGuardar.setAttribute('id', 'btnGuardar');
         botonGuardar.setAttribute("type", "button");
         botonGuardar.textContent = 'Guardar';
-        var botonCancelar = document.createElement("button");
-        botonCancelar.setAttribute("type", "button");
-        botonCancelar.textContent = 'Cerrar';
-        botonCancelar.setAttribute('id', 'btnCancelar');
         fila.appendChild(botonGuardar);
-        fila.appendChild(botonCancelar);
         form.appendChild(fila);
     }
     function crearTabla() {
